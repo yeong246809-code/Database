@@ -68,29 +68,60 @@ insert into `Order`(orderId, orderProduct, orderCount, orderDate) values('c107',
 
 
 # 실습 1-4
+select * from Customer;
+
 # 실습 1-5
+select custid, name, hp from customer;
 # 실습 1-6
+select * from product;
 # 실습 1-7
+select company from product;
 # 실습 1-8
+select distinct(company) from product;
 # 실습 1-9
+select prodName, price from product;
 # 실습 1-10
+select prodName, (price + 500) as 조정단가 from product;
 # 실습 1-11
+select prodName, stock, price from product where company = '오리온';
 # 실습 1-12
+select orderProduct, orderCount, orderDate from `Order` where orderId = 'c102';
 # 실습 1-13
+select orderproduct, orderCount, orderDate from `order` where orderId = 'c102' and orderCount <= 2;
 # 실습 1-14
+select * from product where price >= 1000 and price <= 2000;
+select * from product where price between 1000 and 2000;
 # 실습 1-15
+select custid, name, hp, addr from customer where name like '김%';
 # 실습 1-16
+select custid, name, hp,addr from customer where name like '__';
 # 실습 1-17
+select * from customer where hp is null;
 # 실습 1-18
+select * from customer where addr is not null;
 # 실습 1-19
+select * from customer order by rdate desc;
 # 실습 1-20
+select * from `order` where orderCount >= 3 order by orderCount desc, orderProduct;
 # 실습 1-21
+select avg(price) from product;
 # 실습 1-22
+select sum(stock) as 재고량_합계 from product where company = '농심';
 # 실습 1-23
+select count(*) as 고객수 from customer;
 # 실습 1-24
+select count(distinct(company)) as 제조업체_수 from product;
 # 실습 1-25
+select orderProduct as 주문_상품번호, sum(orderCount) as 총_주문수량 from `order` group by orderProduct order by orderProduct;
 # 실습 1-26
+SELECT company AS 제조업체, COUNT(*) AS 제품수, MAX(price) AS 최고가 FROM Product group by company order by company;
 # 실습 1-27
+SELECT company AS 제조업체, COUNT(*) AS 제품수, MAX(price) AS 최고가 FROM Product GROUP BY company having 제품수 <= 2 limit 2;
+# 실습 1-28
+select * from `order`;
+SELECT orderProduct, orderId, SUM(orderCount) AS 총_주문수량 FROM `Order`  group by orderProduct, orderId order by orderProduct;
 # 실습 1-29
+
 # 실습 1-30
+
 
