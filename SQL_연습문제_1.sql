@@ -113,15 +113,35 @@ select count(*) as 고객수 from customer;
 select count(distinct(company)) as 제조업체_수 from product;
 # 실습 1-25
 select orderProduct as 주문_상품번호, sum(orderCount) as 총_주문수량 from `order` group by orderProduct order by orderProduct;
+
 # 실습 1-26
-SELECT company AS 제조업체, COUNT(*) AS 제품수, MAX(price) AS 최고가 FROM Product group by company order by company;
+SELECT company AS 제조업체, COUNT(*) AS 제품수, MAX(price) AS 최고가 
+FROM Product 
+group by company 
+order by company;
+
 # 실습 1-27
-SELECT company AS 제조업체, COUNT(*) AS 제품수, MAX(price) AS 최고가 FROM Product GROUP BY company having 제품수 <= 2 limit 2;
+SELECT company AS 제조업체, COUNT(*) AS 제품수, MAX(price) AS 최고가 
+FROM Product 
+GROUP BY company having 제품수 <= 2 limit 2;
+
 # 실습 1-28
 select * from `order`;
-SELECT orderProduct, orderId, SUM(orderCount) AS 총_주문수량 FROM `Order`  group by orderProduct, orderId order by orderProduct;
+SELECT orderProduct, orderId, SUM(orderCount) AS 총_주문수량 
+FROM `Order`  
+group by orderProduct, orderId 
+order by orderProduct;
+
 # 실습 1-29
+select a.orderId, b.prodname 
+from `order` as a join product as b ON a.orderProduct = b.prodNo 
+where orderid = 'c102';
 
 # 실습 1-30
+select orderid, name, prodname, orderDate 
+from `order` as a 
+join customer as b on a.orderid = b.custid 
+join product as c on a.orderproduct = c.prodno 
+where month(orderdate) = '07' and day(orderdate) = '03';
 
 
